@@ -3,6 +3,7 @@ class Project < ApplicationRecord
   belongs_to :category
   has_many :pledges
   has_many :backers, -> { distinct }, through: :pledges, source: :user
+  has_many :comments
 
   validates :name, :description, :funding_goal, :fund_by_date, presence: true
 

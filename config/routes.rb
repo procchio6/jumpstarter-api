@@ -15,6 +15,7 @@ Rails.application.routes.draw do
           get 'backers'
           get 'pledges'
         end
+        resources 'comments'
       end
 
       resources :pledges

@@ -6,6 +6,7 @@ class Project < ApplicationRecord
   has_many :comments
 
   validates :name, :description, :funding_goal, :fund_by_date, presence: true
+  validates :funding_goal, numericality: {greater_than: 100}
 
   def self.by_category(category_id)
     Project.where('category_id = ?', category_id)

@@ -9,7 +9,7 @@ class Api::V1::ProjectsController < ApplicationController
       @projects = Project.all
     end
 
-    render json: @projects
+    paginate json: @projects, per_page: 12
   end
 
   def almost_funded

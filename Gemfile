@@ -34,6 +34,7 @@ gem 'api-pagination', '~> 4.6', '>= 4.6.3'
 
 gem 'carrierwave-base64', '~> 2.5', '>= 2.5.3'
 gem 'fog-aws'
+gem 'mini_magick', '~> 4.8'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -17,7 +17,7 @@ class Api::V1::SessionsController < ApplicationController
       # if they do, render back a json response of the user info
       # issue token
       created_jwt = issue_token({id: user.id})
-      render json: {username: user.username, token: created_jwt}
+      render json: {id: current_user.id, name: user.username, token: created_jwt}
     else
       # otherwise, render back some error response
       render json: {

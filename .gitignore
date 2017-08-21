@@ -16,3 +16,4 @@
 .byebug_history
 .env
 /public/uploads
+.DS_store

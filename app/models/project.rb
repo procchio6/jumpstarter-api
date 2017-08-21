@@ -1,9 +1,9 @@
 class Project < ApplicationRecord
   belongs_to :creator, class_name: :User, foreign_key: :user_id
   belongs_to :category
-  has_many :pledges
+  has_many :pledges, dependent: :destroy
   has_many :backers, -> { distinct }, through: :pledges, source: :user
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   validates :name, :description, :funding_goal, :fund_by_date, presence: true
   validates :funding_goal, numericality: {greater_than: 100}

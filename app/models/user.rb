@@ -7,6 +7,8 @@ class User < ApplicationRecord
   validates :email, :username, uniqueness: true
   validates :first_name, :last_name, :username, :email, presence: true
 
+  mount_base64_uploader :avatar, AvatarUploader
+
   def full_name
     "#{first_name} #{last_name}"
   end

@@ -4,7 +4,13 @@ Rails.application.routes.draw do
       post '/login', to: 'sessions#create'
       get '/me', to: 'sessions#show'
       post '/signup', to: 'users#create'
-      resources :users, except: :destroy
+      resources :users, except: :destroy do
+        member do
+          get 'funded_projects'
+          get 'created_projects'
+        end
+      end
+
 
       get '/projects/active', to: 'projects#active'
       get '/projects/inactive', to: 'projects#inactive'

@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-  before_action :set_user, only: [:show, :update, :destroy]
+  before_action :set_user, only: [:show, :update, :destroy, :funded_projects, :created_projects]
 
   def login
     render json: {user_id:1, token:'test token'}
@@ -39,6 +39,14 @@ class Api::V1::UsersController < ApplicationController
 
   def destroy
     @user.destroy
+  end
+
+  def funded_projects
+    render json: @user.funded_projects
+  end
+
+  def created_projects
+    render json: @user.created_projects
   end
 
   private

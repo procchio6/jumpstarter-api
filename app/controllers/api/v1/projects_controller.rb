@@ -60,7 +60,12 @@ class Api::V1::ProjectsController < ApplicationController
   end
 
   def destroy
-    @project.destroy
+    if @project.creator.id == current_user.id
+      @project.destroy
+      render json: @project
+    else
+      render json: {error: 'Permission denied!'}
+    end
   end
 
   private

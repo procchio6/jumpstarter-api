@@ -3,11 +3,7 @@ class Api::V1::ProjectsController < ApplicationController
   before_action :authorize_user!, only: [:create, :update, :destroy]
 
   def index
-    if params[:category]
-      @projects = Project.by_category(params[:category])
-    else
-      @projects = Project.all
-    end
+    @projects = Project.filter(params.slice(*filter_params))
 
     paginate json: @projects, per_page: 12
   end
@@ -74,10 +70,13 @@ class Api::V1::ProjectsController < ApplicationController
       @project = Project.find(params[:id])
     end
 
-
     def project_params
       params
         .require(:project)
         .permit(:name, :description, :funding_goal, :fund_by_date, :image, :user_id, :category_id, :campaign_content)
+    end
+
+    def filter_params
+      [:by_category, :active, :inactive]
     end
 end

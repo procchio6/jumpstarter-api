@@ -1,4 +1,6 @@
 class Project < ApplicationRecord
+  include Filterable
+
   belongs_to :creator, class_name: :User, foreign_key: :user_id
   belongs_to :category
   has_many :pledges, dependent: :destroy
@@ -11,24 +13,24 @@ class Project < ApplicationRecord
   mount_base64_uploader :image, ImageUploader
 
   def self.by_category(category_id)
-    Project.where('category_id = ?', category_id)
+    where('category_id = ?', category_id)
   end
 
   def self.almost_funded
-    Project.active.joins(:pledges).group('projects.id')
+    active.joins(:pledges).group('projects.id')
       .having('SUM(amount)/projects.funding_goal >= 0.90 AND SUM(amount)/projects.funding_goal < 1')
   end
 
   def self.almost_over
-    Project.active.where("fund_by_date BETWEEN ? AND ?", Date.today, 2.days.from_now)
+    active.where("fund_by_date BETWEEN ? AND ?", Date.today, 2.days.from_now)
   end
 
-  def self.active
-    Project.where("fund_by_date >= ?", Date.today)
+  def self.active(*args)
+    where("fund_by_date >= ?", Date.today)
   end
 
-  def self.inactive
-    Project.where("fund_by_date < ?", Date.today)
+  def self.inactive(*args)
+    where("fund_by_date < ?", Date.today)
   end
 
   def number_of_backers

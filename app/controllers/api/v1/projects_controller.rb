@@ -51,7 +51,7 @@ class Api::V1::ProjectsController < ApplicationController
     if @project.update(project_params)
       render json: @project
     else
-      render json: @project.errors, status: :unprocessable_entity
+      render json: {errors: @project.errors.full_messages}, status: :unprocessable_entity
     end
   end
 

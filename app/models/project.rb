@@ -10,6 +10,8 @@ class Project < ApplicationRecord
   validates :name, :description, :funding_goal, :fund_by_date, presence: true
   validates :funding_goal, numericality: {greater_than_or_equal_to: 100, less_than_or_equal_to: 10000000}
   validate :fund_by_date_cannot_be_in_the_past
+  validates :name, length: { maximum: 50 }
+  validates :description, length: { maximum: 140 }
 
   mount_base64_uploader :image, ImageUploader
 

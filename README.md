@@ -25,6 +25,8 @@ As a user, I want:
   * React-Redux
 * Draft.js
 * Semantic UI
+* Moment.js
+* Accounting.js
 
 #### Server
 

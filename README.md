@@ -1,24 +1,33 @@
-# README
+# Jumpstarter
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Crowdfunding site for creators and makers.
 
-Things you may want to cover:
+You can find a live demo [here](https://jumpstarter-client.herokuapp.com).
 
-* Ruby version
+## User Story
 
-* System dependencies
+As a user, I want:
 
-* Configuration
+* To create a project with a funding goal
+* See a users created and funded projects
+* Pledge towards a project
+* Leave comments on a project
+* See backers of a project
 
-* Database creation
+## Frameworks and Libraries
 
-* Database initialization
+#### Client
 
-* How to run the test suite
+* React
+  * React DOM
+  * React Router DOM
+* Redux
+  * React-Redux
+* Draft.js
+* Semantic UI
 
-* Services (job queues, cache servers, search engines, etc.)
+#### Server
 
-* Deployment instructions
-
-* ...
+* Ruby on Rails
+* PostgreSQL
+* Carrierwave
